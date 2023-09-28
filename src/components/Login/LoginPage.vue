@@ -1,8 +1,9 @@
 <script setup>
 import {ref} from "vue";
 
-import LoginEcp from '@/components/Login/LoginEcp.vue'
-import LoginSystem from '@/components/Login/LoginSystem.vue'
+import LoginEcp from '@/components/Login/LoginEcp/LoginEcp.vue'
+import LoginSystem from '@/components/Login/LoginSystem/LoginSystem.vue'
+import UserList from "@/components/Login/LoginEcp/UserList.vue";
 
 let isEcp = ref(true)
 
@@ -29,6 +30,8 @@ function loginInterfaceEcp() {
 
       <LoginEcp v-if="isEcp"></LoginEcp>
       <LoginSystem v-else></LoginSystem>
+      <UserList></UserList>
+
     </div>
   </div>
 </template>
