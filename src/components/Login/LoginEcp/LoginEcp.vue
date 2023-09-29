@@ -1,12 +1,43 @@
-<script setup></script>
+<script setup>
+import UserList from '@/components/Login/LoginEcp/UserList.vue'
+import { ref } from 'vue'
+
+let isUserListOpen = ref(false)
+
+let chooseKeyText = ref('Выберите ключ')
+let fullNameFromUserList = ref('')
+let innFromUserList = ref('')
+let isUserListClicked = ref(false)
+
+function addDetailsFromUserList(fullName, inn) {
+  chooseKeyText.value = ''
+  fullNameFromUserList.value = fullName
+  innFromUserList.value = inn
+  isUserListOpen.value = false
+  isUserListClicked.value = true
+}
+
+function chooseKey() {
+  isUserListOpen.value = !isUserListOpen.value
+}
+</script>
 
 <template>
   <div class="login__ecp">
     <p class="login__title">Вход с помощью ЭЦП</p>
 
-    <button type="button" class="login__choose-key">
-      <span class="login__ecp-text">Выберите ключ</span>
+    <button
+      type="button"
+      :class="{ 'border-deep-sky-blue': isUserListOpen }"
+      class="login__choose-key"
+      @click="chooseKey"
+    >
+      <span class="login__ecp-text" :class="{'justify-content-start': isUserListClicked}"
+        >{{ chooseKeyText }}<span v-if="isUserListClicked" class="inn-user-list">ИНН: <span class="inn-user-list-number">{{ innFromUserList }}</span></span>
+        <span v-if="isUserListClicked" class="name-user-list">{{ fullNameFromUserList }}</span></span
+      >
       <svg
+          :class="{'top-right-21': isUserListClicked}"
         class="foler-icon"
         width="24"
         height="24"
@@ -43,11 +74,46 @@
       </svg>
     </div>
     <button type="button" class="login__ecp-button">Войти через ЭЦП</button>
+    <UserList v-if="isUserListOpen" @add="addDetailsFromUserList"></UserList>
   </div>
 </template>
 
 <style scoped lang="scss">
 @import '../../../assets/base';
+
+.justify-content-start {
+  justify-content: flex-start !important;
+}
+
+.top-right-21 {
+  top: 21px !important;
+  right: 21px !important;
+}
+
+.border-deep-sky-blue {
+  border-color: $deepSkyBlue !important;
+}
+
+.inn-user-list {
+  padding: 6px;
+  border-radius: 6px;
+  background-color: #f5f6fa;
+  color: $deepSkyBlue;
+  font-size: 12px;
+  line-height: 150%;
+  margin-left: 15px;
+
+  &-number {
+    color: #4e5053;
+  }
+}
+
+.name-user-list {
+  font-weight: 600;
+  color: $darkCharcoal;
+  font-size: 14px;
+  margin-left: 15px;
+}
 
 .login__ecp {
   padding: 25px 32px;
@@ -62,17 +128,21 @@
 
   .login__choose-key {
     width: 100%;
-    padding: 18px 172px 19px 172px;
+    padding: 18px 0 19px 0;
     margin-top: 30px;
     border: 1px solid $lightGray;
     border-radius: 4px;
     cursor: pointer;
     position: relative;
     background: $lightestGray;
+    transition: all 0.5s ease;
 
     .login__ecp-text {
       font-size: 16px;
       color: $steelGray;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .foler-icon {

@@ -1,10 +1,8 @@
 <script setup>
-import {ref} from "vue";
+import { ref } from 'vue'
 
 import LoginEcp from '@/components/Login/LoginEcp/LoginEcp.vue'
 import LoginSystem from '@/components/Login/LoginSystem/LoginSystem.vue'
-import UserList from "@/components/Login/LoginEcp/UserList.vue";
-
 let isEcp = ref(true)
 
 function loginInterfaceSystem() {
@@ -24,14 +22,26 @@ function loginInterfaceEcp() {
   <div class="login-container">
     <div class="login">
       <div class="login__buttons">
-        <button type="button" :class="{'button-styles-light': !isEcp}" class="login__button login__button--ecp" @click="loginInterfaceEcp">Вход с помощью ЭЦП</button>
-        <button type="button" :class="{'button-styles-dark': !isEcp}" class="login__button login__button--system" @click="loginInterfaceSystem">Вход в систему</button>
+        <button
+          type="button"
+          :class="{ 'button-styles-light': !isEcp }"
+          class="login__button login__button--ecp"
+          @click="loginInterfaceEcp"
+        >
+          Вход с помощью ЭЦП
+        </button>
+        <button
+          type="button"
+          :class="{ 'button-styles-dark': !isEcp }"
+          class="login__button login__button--system"
+          @click="loginInterfaceSystem"
+        >
+          Вход в систему
+        </button>
       </div>
 
       <LoginEcp v-if="isEcp"></LoginEcp>
       <LoginSystem v-else></LoginSystem>
-      <UserList></UserList>
-
     </div>
   </div>
 </template>
@@ -54,12 +64,13 @@ function loginInterfaceEcp() {
 }
 
 div.login-container {
-  height: 100vh;
+  height: 150vh;
   display: flex;
   justify-content: center;
   background: $paleSilver;
 
   .login {
+    position: relative;
     margin-top: 136px;
     .login__buttons {
       margin-bottom: 24px;
@@ -69,7 +80,10 @@ div.login-container {
         border: none;
         border-radius: 6px;
         cursor: pointer;
-        transition: background-color 0.5s, box-shadow 0.5s ease, color 0.5s ease;
+        transition:
+          background-color 0.5s,
+          box-shadow 0.5s ease,
+          color 0.5s ease;
       }
 
       .login__button--ecp {
