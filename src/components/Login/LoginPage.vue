@@ -51,7 +51,7 @@ function loginInterfaceEcp() {
 
 .button-styles-light {
   color: $steelGray !important;
-  border: 1px solid #f0f4f9 !important;
+  border: 1px solid $lightBlueGray !important;
   box-shadow: 0 2px 2px 0 rgba(122, 136, 155, 0.16) !important;
   background: $white !important;
 }
@@ -63,7 +63,7 @@ function loginInterfaceEcp() {
   box-shadow: none !important;
 }
 
-div.login-container {
+.login-container {
   height: 150vh;
   display: flex;
   justify-content: center;
@@ -72,29 +72,30 @@ div.login-container {
   .login {
     position: relative;
     margin-top: 136px;
-    .login__buttons {
+    &__buttons {
       margin-bottom: 24px;
-      .login__button {
-        padding: 11px 11px 12px 12px;
-        font-size: 14px;
-        border: none;
-        border-radius: 6px;
-        cursor: pointer;
-        transition:
-          background-color 0.5s,
-          box-shadow 0.5s ease,
-          color 0.5s ease;
-      }
+    }
 
-      .login__button--ecp {
+    &__button {
+      padding: 11px 11px 12px 12px;
+      font-size: 14px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition:
+        background-color 0.5s,
+        box-shadow 0.5s ease,
+        color 0.5s ease;
+
+      &--ecp {
         color: $deepSkyBlue;
         background: $paleBlue;
       }
 
-      .login__button--system {
+      &--system {
         margin-left: 16px;
         color: $steelGray;
-        border: 1px solid #f0f4f9;
+        border: 1px solid $lightBlueGray;
         box-shadow: 0 2px 2px 0 rgba(122, 136, 155, 0.16);
         background: $white;
       }

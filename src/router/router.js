@@ -1,10 +1,16 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import LoginPage from '@/components/Login/LoginPage.vue'
-import FirstStep from "@/components/Steps/FirstStep.vue";
+import FirstStep from '@/components/Steps/FirstStep.vue'
+import SecondStep from "@/components/Steps/SecondStep.vue";
 
 const routes = [
   {
     path: '/',
+    component: LoginPage
+  },
+
+  {
+    path: '/login',
     component: LoginPage,
     name: 'Login'
   },
@@ -12,7 +18,13 @@ const routes = [
   {
     path: '/step1',
     component: FirstStep,
-    name: "Step 1"
+    name: 'Step 1'
+  },
+
+  {
+    path: '/step2',
+    component: SecondStep,
+    name: 'Step 2'
   }
 ]
 

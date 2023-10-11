@@ -1,6 +1,7 @@
 <script setup>
 import UserList from '@/components/Login/LoginEcp/UserList.vue'
 import { ref } from 'vue'
+import router from "@/router/router";
 
 let isUserListOpen = ref(false)
 
@@ -20,6 +21,14 @@ function addDetailsFromUserList(fullName, inn) {
 function chooseKey() {
   isUserListOpen.value = !isUserListOpen.value
 }
+
+function login() {
+  if (fullNameFromUserList.value && innFromUserList.value) {
+    router.push({name: "Step 1"})
+  } else {
+    alert("Please choose the key!")
+  }
+}
 </script>
 
 <template>
@@ -32,12 +41,17 @@ function chooseKey() {
       class="login__choose-key"
       @click="chooseKey"
     >
-      <span class="login__ecp-text" :class="{'justify-content-start': isUserListClicked}"
-        >{{ chooseKeyText }}<span v-if="isUserListClicked" class="inn-user-list">ИНН: <span class="inn-user-list-number">{{ innFromUserList }}</span></span>
-        <span v-if="isUserListClicked" class="name-user-list">{{ fullNameFromUserList }}</span></span
+      <span class="login__ecp-text" :class="{ 'justify-content-start': isUserListClicked }"
+        >{{ chooseKeyText
+        }}<span v-if="isUserListClicked" class="inn-user-list"
+          >ИНН: <span class="inn-user-list-number">{{ innFromUserList }}</span></span
+        >
+        <span v-if="isUserListClicked" class="name-user-list">{{
+          fullNameFromUserList
+        }}</span></span
       >
       <svg
-          :class="{'top-right-21': isUserListClicked}"
+        :class="{ 'top-right-21': isUserListClicked }"
         class="foler-icon"
         width="24"
         height="24"
@@ -73,7 +87,7 @@ function chooseKey() {
         </g>
       </svg>
     </div>
-    <button type="button" class="login__ecp-button">Войти через ЭЦП</button>
+    <button @click="login" type="button" class="login__ecp-button">Войти через ЭЦП</button>
     <UserList v-if="isUserListOpen" @add="addDetailsFromUserList"></UserList>
   </div>
 </template>
@@ -97,14 +111,14 @@ function chooseKey() {
 .inn-user-list {
   padding: 6px;
   border-radius: 6px;
-  background-color: #f5f6fa;
+  background-color: $veryLightBlueGray;
   color: $deepSkyBlue;
   font-size: 12px;
   line-height: 150%;
   margin-left: 15px;
 
   &-number {
-    color: #4e5053;
+    color: $darkGray;
   }
 }
 
