@@ -1,7 +1,7 @@
 <script setup>
 import UserList from '@/components/Login/LoginEcp/UserList.vue'
 import { ref } from 'vue'
-import router from "@/router/router";
+import router from '@/router/router'
 
 let isUserListOpen = ref(false)
 
@@ -24,9 +24,9 @@ function chooseKey() {
 
 function login() {
   if (fullNameFromUserList.value && innFromUserList.value) {
-    router.push({name: "Step 1"})
+    router.push({ name: 'Step 1' })
   } else {
-    alert("Please choose the key!")
+    alert('Please choose the key!')
   }
 }
 </script>

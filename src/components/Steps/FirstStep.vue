@@ -1,20 +1,19 @@
 <script setup>
 import { ref } from 'vue'
-import router from "@/router/router";
+import router from '@/router/router'
 
 const formData = ref({
-  phoneNumber: "",
-  direction: ""
+  phoneNumber: '',
+  direction: ''
 })
 
 function sumbitForm() {
   if (formData.value.phoneNumber && formData.value.direction) {
-    router.push({name: "Step 2"})
+    router.push({ name: 'Step 2' })
   } else {
-    alert("Please fill out the fields!")
+    alert('Please fill out the fields!')
   }
 }
-
 </script>
 
 <template>
@@ -100,7 +99,14 @@ function sumbitForm() {
                   />
                 </svg> </span
             ></label>
-            <input name="tel" id="tel" type="tel" class="form__input" v-model="formData.phoneNumber" required />
+            <input
+              name="tel"
+              id="tel"
+              type="tel"
+              class="form__input"
+              v-model="formData.phoneNumber"
+              required
+            />
             <p class="form__info">
               На этот номер будет подключен к боту для получения важных уведомлениях
               <sub>
@@ -382,7 +388,7 @@ function sumbitForm() {
 
           background-image: url('@/assets/icons/arrow-down.svg');
           background-repeat: no-repeat;
-          background-position: calc(100% - 12px);
+          background-position: calc(100% - 10px);
         }
 
         &:focus {
