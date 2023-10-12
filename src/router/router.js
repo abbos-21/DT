@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import LoginPage from '@/components/Login/LoginPage.vue'
 import FirstStep from '@/components/Steps/FirstStep.vue'
 import SecondStep from '@/components/Steps/SecondStep.vue'
-import ThirdStep from "@/components/Steps/ThirdStep.vue";
+import ThirdStep from '@/components/Steps/ThirdStep.vue'
 
 const routes = [
   {

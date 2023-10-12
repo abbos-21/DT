@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import router from "@/router/router";
+import router from '@/router/router'
 
 const bankName = ref('')
 const checkingAccount = ref('')
@@ -18,14 +18,14 @@ function removeBank(index) {
 
 function goToNextPage() {
   if (submittedDetails.value.length) {
-    router.push({name: "Step 3"})
+    router.push({ name: 'Step 3' })
   } else {
-    alert("Please add the bank!")
+    alert('Please add the bank!')
   }
 }
 
 function skipStep() {
-  router.push({name: "Step 3"})
+  router.push({ name: 'Step 3' })
 }
 </script>
 
@@ -165,11 +165,13 @@ function skipStep() {
           <div class="step__footer__line"></div>
 
           <div class="step__footer__buttons">
-            <button type="button" class="step__footer__buttons-button" @click="goToNextPage">Далее</button>
-            <button type="button" class="step__footer__buttons-button" @click="skipStep">Пропустит</button>
-            <i class="step__footer__buttons-reminder">
-              Вы можете настроит позже на кабинете
-            </i>
+            <button type="button" class="step__footer__buttons-button" @click="goToNextPage">
+              Далее
+            </button>
+            <button type="button" class="step__footer__buttons-button" @click="skipStep">
+              Пропустит
+            </button>
+            <i class="step__footer__buttons-reminder"> Вы можете настроит позже на кабинете </i>
           </div>
         </div>
       </div>
