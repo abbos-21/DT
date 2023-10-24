@@ -3,6 +3,7 @@ import LoginPage from '@/components/Login/LoginPage.vue'
 import FirstStep from '@/components/Steps/FirstStep.vue'
 import SecondStep from '@/components/Steps/SecondStep.vue'
 import ThirdStep from '@/components/Steps/ThirdStep.vue'
+import FourthStep from "@/components/Steps/FourthStep.vue";
 
 const routes = [
   {
@@ -32,6 +33,12 @@ const routes = [
     path: '/step3',
     component: ThirdStep,
     name: 'Step 3'
+  },
+
+  {
+    path: '/step4',
+    component: FourthStep,
+    name: 'Step 4'
   }
 ]
 
